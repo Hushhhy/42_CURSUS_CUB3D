@@ -6,7 +6,7 @@
 #    By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/06 20:27:40 by acarpent          #+#    #+#              #
-#    Updated: 2025/01/07 13:12:41 by acarpent         ###   ########.fr        #
+#    Updated: 2025/01/08 16:15:50 by acarpent         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,7 @@ SRCS_FILES = Main_functions/main.c\
 				Parsing/Map/Check/map_parsing_utils.c\
 				Parsing/Map/Check/check_dir.c\
 				Parsing/Map/Check/check_space_dir.c\
+				Parsing/Map/Check/convert_map.c\
 				Error_manager/error.c\
 				Error_manager/free.c\
 				Gaming/Move/key.c\

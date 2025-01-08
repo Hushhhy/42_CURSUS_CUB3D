@@ -6,7 +6,7 @@
 /*   By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 10:35:31 by codespace         #+#    #+#             */
-/*   Updated: 2024/12/23 15:36:46 by acarpent         ###   ########.fr       */
+/*   Updated: 2025/01/08 16:17:48 by acarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_data {
 	int		ceiling_rgb;
 	int		floor_rgb;
 	char	**map;
+	int		**map_int;
 	int		map_width;
 	int		map_height;
 	void	*img;

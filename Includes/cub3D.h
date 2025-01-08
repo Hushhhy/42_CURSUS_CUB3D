@@ -6,7 +6,7 @@
 /*   By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:14:51 by acarpent          #+#    #+#             */
-/*   Updated: 2025/01/08 13:09:05 by acarpent         ###   ########.fr       */
+/*   Updated: 2025/01/08 16:19:08 by acarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,7 @@ void	_coma_check(char *color, t_game *game);
 
 void	_getmap(t_game *game, int i);
 void	_map_realloc(t_game *game);
+void	_smaller_line(t_game *game, int len, int i);
 void	_verify(t_game *game, int start);
 int		_is_invalid(char *line, t_game *game);
 void	_after_map(t_game *game, int last);
@@ -183,6 +184,9 @@ bool	_check_space_row(char **map, int y, int x);
 bool	_check_space_col(char **map, int y, int x);
 bool	_check_space_left(char **map, int y, int i);
 bool	_check_space_up(char **map, int i, int x);
+int		**_convert_map(t_game *game);
+
+void	print_map_int(t_game *game);
 
 /*-----------------------------GAME---------------------------------*/
 

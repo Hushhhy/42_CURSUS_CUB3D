@@ -6,7 +6,7 @@
 /*   By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 14:04:42 by acarpent          #+#    #+#             */
-/*   Updated: 2024/12/16 15:38:50 by acarpent         ###   ########.fr       */
+/*   Updated: 2025/01/08 16:25:31 by acarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ void	_check_the_map(t_game *game)
 		exit(_error_msg_free("MAP", ERR_PLAYER, 1, game));
 	if (!_check_closed_map(game))
 		exit(_error_msg_free("MAP", ERR_CLOSED, 1, game));
+	_map_realloc(game);
+	game->data.map_int = _convert_map(game);
+	print_map_int(game);
 }
 
 bool	_check_nb_player(char **map, t_game *game)
