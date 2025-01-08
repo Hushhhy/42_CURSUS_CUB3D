@@ -6,7 +6,7 @@
 #    By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/06 20:27:40 by acarpent          #+#    #+#              #
-#    Updated: 2024/12/13 14:07:54 by acarpent         ###   ########.fr        #
+#    Updated: 2025/01/07 13:12:41 by acarpent         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,11 @@ SRCS_FILES = Main_functions/main.c\
 				Parsing/Map/Check/check_space_dir.c\
 				Error_manager/error.c\
 				Error_manager/free.c\
+				Gaming/Move/key.c\
+				Gaming/Exit/exit_game.c\
+				Gaming/main_game.c\
+				Gaming/Render/images.c\
+				
 
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_FILES))			
 

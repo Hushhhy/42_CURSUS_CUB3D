@@ -6,7 +6,7 @@
 /*   By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:14:51 by acarpent          #+#    #+#             */
-/*   Updated: 2024/12/16 15:46:43 by acarpent         ###   ########.fr       */
+/*   Updated: 2025/01/08 13:09:05 by acarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ void	_coma_check(char *color, t_game *game);
 /*--GET MAP--*/
 
 void	_getmap(t_game *game, int i);
+void	_map_realloc(t_game *game);
 void	_verify(t_game *game, int start);
 int		_is_invalid(char *line, t_game *game);
 void	_after_map(t_game *game, int last);
@@ -182,5 +183,20 @@ bool	_check_space_row(char **map, int y, int x);
 bool	_check_space_col(char **map, int y, int x);
 bool	_check_space_left(char **map, int y, int i);
 bool	_check_space_up(char **map, int i, int x);
+
+/*-----------------------------GAME---------------------------------*/
+
+/*---------------------------------*/
+/*--IMAGES--*/
+
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+
+/*---------------------------------*/
+/*--GAME CLEARING--*/
+
+int		_close_game(t_game *game);
+
+void	_gaming(t_game *game);
+int		_key_press(int key, t_game *game);
 
 #endif

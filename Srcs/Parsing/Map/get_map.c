@@ -6,7 +6,7 @@
 /*   By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 13:10:40 by acarpent          #+#    #+#             */
-/*   Updated: 2024/12/13 12:55:50 by acarpent         ###   ########.fr       */
+/*   Updated: 2025/01/08 13:28:29 by acarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,34 @@ int	_get_map_size(t_game *game, int i)
 		if (!_line_empty(file[start]))
 			size++;
 	return (size);
+}
+
+void	_map_realloc(t_game *game)
+{
+	char	*new;
+	int		len;
+	int		i;
+
+	i = 0;
+	while (game->data.map[i])
+	{
+		printf("%s", game->data.map[i]);
+		i++;
+	}
+	i = 0;
+	game->data.map_width = _get_map_width(game->data.map);
+	while (game->data.map[i])
+	{
+		len = ft_strlen(game->data.map[i]);
+		if (len < game->data.map_width)
+		{
+			new = malloc(game->data.map_width + 1);
+			ft_strcpy(new, game->data.map[i]);
+			ft_memset(new + len, '1', game->data.map_width - len);
+			new[game->data.map_width] = '\0';
+			free(game->data.map[i]);
+			game->data.map[i] = new;
+		}
+		i++;
+	}
 }

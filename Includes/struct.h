@@ -6,7 +6,7 @@
 /*   By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 10:35:31 by codespace         #+#    #+#             */
-/*   Updated: 2024/12/13 13:58:06 by acarpent         ###   ########.fr       */
+/*   Updated: 2024/12/23 15:36:46 by acarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ typedef struct s_data {
 	char	**map;
 	int		map_width;
 	int		map_height;
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 }	t_data;
 
 typedef struct s_player {
