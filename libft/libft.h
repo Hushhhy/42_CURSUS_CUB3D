@@ -6,7 +6,7 @@
 /*   By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:11:54 by acarpent          #+#    #+#             */
-/*   Updated: 2024/12/13 14:00:50 by acarpent         ###   ########.fr       */
+/*   Updated: 2025/01/08 15:50:53 by acarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 void		ft_free(char **ptr);
 char		*ft_strjoin_free2(char *s1, char *s2);
 int			ft_strcmp(const char *s1, const char *s2);
+char		*ft_strncpy(char *dst, const char *src, size_t len);
 
 // PRINTF
 
