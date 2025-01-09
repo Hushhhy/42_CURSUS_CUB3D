@@ -6,7 +6,7 @@
 /*   By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:53:40 by acarpent          #+#    #+#             */
-/*   Updated: 2025/01/08 16:31:32 by acarpent         ###   ########.fr       */
+/*   Updated: 2025/01/09 15:25:53 by acarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,12 @@ int	*convert_line(char *s)
 int	**_convert_map(t_game *game)
 {
 	int	**map;
+	int	height;
 	int	i;
 	
 	i = 0;
-	map = malloc(sizeof(int *) * game->data.map_height);
+	height = _get_map_height(game->data.map);
+	map = malloc(sizeof(int *) * height);
 	if (!map)
 		return (NULL);
 	while (game->data.map[i])

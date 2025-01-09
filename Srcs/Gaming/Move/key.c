@@ -6,7 +6,7 @@
 /*   By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 15:13:33 by acarpent          #+#    #+#             */
-/*   Updated: 2024/12/23 15:10:09 by acarpent         ###   ########.fr       */
+/*   Updated: 2025/01/09 14:09:53 by acarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,68 @@
 
 int	_key_press(int key, t_game *game)
 {
-	if (key == KEY_ESC)
+	if (key < 203)
+		game->key.key[key] = 1;
+	if (key == ESC)
 		_close_game(game);
-	// if (key == KEY_W || key == KEY_UP)
-	// 	move_up(game);
-	// if (key == KEY_S || key == KEY_DOWN)
-	// 	move_down(game);
-	// if (key == KEY_A || key == KEY_LEFT)
-	// 	move_left(game);
-	// if (key == KEY_D || key == KEY_RIGHT)
-	// 	move_right(game);
+	if(key == LEFT)
+		game->key.left_pressed = true;
+	if (key == RIGHT)
+		game->key.right_pressed = true;
 	return (0);
+}
+
+int	_key_release(int key, t_game *game)
+{
+	if (key < 203)
+		game->key.key[key] = 1;
+	if(key == LEFT)
+		game->key.left_pressed = false;
+	if (key == RIGHT)
+		game->key.right_pressed = false;
+	return (0);
+}
+
+void	rotate_left(t_game *game)
+{
+	double	oldir;
+	double	old_planex;
+	double	rot_speed;
+
+	rot_speed = ROT_SPEED;
+	if (game->key.left_pressed)
+	{
+		oldir = game->player.dir.x;
+		game->player.dir.x = game->player.dir.x * cos(-rot_speed)
+			- game->player.dir.y * sin(-rot_speed);
+		game->player.dir.y = oldir * sin(-rot_speed) + game->player.dir.y
+			* cos(-rot_speed);
+		old_planex = game->player.plane.x;
+		game->player.plane.x = game->player.plane.x * cos(-rot_speed)
+			- game->player.plane.y * sin(-rot_speed);
+		game->player.plane.y = old_planex * sin(-rot_speed) + game->player.plane.y
+			* cos(-rot_speed);
+	}
+}
+
+void	rotate_right(t_game *game)
+{
+	double	oldir;
+	double	rot_speed;
+	double	old_planex;
+
+	rot_speed = ROT_SPEED;
+	if (game->key.right_pressed)
+	{
+		oldir = game->player.dir.x;
+		game->player.dir.x = game->player.dir.x * cos(rot_speed)
+			- game->player.dir.y * sin(rot_speed);
+		game->player.dir.y = oldir * sin(rot_speed) + game->player.dir.y
+			* cos(rot_speed);
+		old_planex = game->player.plane.x;
+		game->player.plane.x = game->player.plane.x * cos(rot_speed)
+			- game->player.plane.y * sin(rot_speed);
+		game->player.plane.y = old_planex * sin(rot_speed) + game->player.plane.y
+			* cos(rot_speed);
+	}
 }

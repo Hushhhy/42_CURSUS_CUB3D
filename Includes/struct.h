@@ -6,14 +6,22 @@
 /*   By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 10:35:31 by codespace         #+#    #+#             */
-/*   Updated: 2025/01/08 16:17:48 by acarpent         ###   ########.fr       */
+/*   Updated: 2025/01/09 14:04:32 by acarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
+# include <stdbool.h>
+
 /*----------------------Structs and lists---------------------------*/
+
+typedef struct s_vector2_d
+{
+	double		x;
+	double		y;
+}				t_vector2_d;
 
 typedef struct s_data {
 	char	**file;
@@ -30,36 +38,29 @@ typedef struct s_data {
 	int		**map_int;
 	int		map_width;
 	int		map_height;
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
 }	t_data;
 
 typedef struct s_player {
 	int		p_count;
-	double	pos_x;
-	double	pos_y;
-	double	dir_x;
-	double	dir_y;
-	double	plane_x;
-	double	plane_y;
+	t_vector2_d	pos;
+	t_vector2_d	dir;
+	t_vector2_d	plane;
 }	t_player;
 
 typedef struct s_ray {
-	double	pos_x;
-	double	pos_y;
-	double	dir_x;
-	double	dir_y;
-	double	side_dist_x;
-	double	side_dist_y;
-	double	delta_dist_x;
-	double	delta_dist_y;
-	int		step_x;
-	int		step_y;
-	int		hit;
-	int		side;
+	t_vector2_d	raydir;
+	t_vector2_d	sidedist;
+	t_vector2_d	deltaDist;
+	double		perp_walldist;
+	int			lineheight;
+	int			start;
+	int			end;
+	int			color;
+	int			mapx;
+	int			mapy;
+	int			stepx;
+	int			stepy;
+	int			side;
 }	t_ray;
 
 typedef struct s_mlx {
@@ -70,13 +71,21 @@ typedef struct s_mlx {
 	int		bpp;
 	int		size_line;
 	int		endian;
+	char	*addr;
 }	t_mlx;
+
+typedef struct s_key {
+	bool	left_pressed;
+	bool	right_pressed;
+	bool	key[256];
+}	t_key;
 
 typedef struct s_game {
 	t_mlx		mlx;
 	t_ray		ray;
 	t_player	player;
 	t_data		data;
+	t_key		key;
 }	t_game;
 
 #endif

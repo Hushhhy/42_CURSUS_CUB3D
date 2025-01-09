@@ -6,13 +6,73 @@
 /*   By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 13:25:31 by acarpent          #+#    #+#             */
-/*   Updated: 2024/12/23 15:09:20 by acarpent         ###   ########.fr       */
+/*   Updated: 2025/01/09 15:52:35 by acarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	move_up(t_game *game)
+void	move_forward(t_game *game, double move_speed)
 {
-    
+	if (game->key.key[KEY_W])
+	{
+		if (!game->data.map_int[(int)(game->player.pos.y + game->player.dir.y
+				* (move_speed))][(int)game->player.pos.x])
+			game->player.pos.y += game->player.dir.y * move_speed;
+		if (!game->data.map_int[(int)game->player.pos.y][(int)(game->player.pos.x
+			+ game->player.dir.x * (move_speed))])
+			game->player.pos.x += game->player.dir.x * move_speed;
+	}
+}
+
+void	move_backward(t_game *game, double move_speed)
+{
+	if (game->key.key[KEY_S])
+	{
+		if (!game->data.map_int[(int)(game->player.pos.y - game->player.dir.y
+				* (move_speed))][(int)game->player.pos.x])
+			game->player.pos.y -= game->player.dir.y * move_speed;
+		if (!game->data.map_int[(int)game->player.pos.y][(int)(game->player.pos.x
+			- game->player.dir.x * (move_speed))])
+			game->player.pos.x -= game->player.dir.x * move_speed;
+	}
+}
+
+void	move_left(t_game *game, double move_speed)
+{
+	if (game->key.key[KEY_A])
+	{
+		if (!game->data.map_int[(int)(game->player.pos.y - game->player.dir.x
+				* (move_speed))][(int)game->player.pos.x])
+			game->player.pos.y -= game->player.dir.x * move_speed;
+		if (!game->data.map_int[(int)game->player.pos.y][(int)(game->player.pos.x
+			+ game->player.dir.y * (move_speed))])
+			game->player.pos.x += game->player.dir.y * move_speed;
+	}
+}
+
+void	move_right(t_game *game, double move_speed)
+{
+	if (game->key.key[KEY_D])
+	{
+		if (!game->data.map_int[(int)(game->player.pos.y + game->player.dir.x
+				* (move_speed))][(int)game->player.pos.x])
+			game->player.pos.y += game->player.dir.x * move_speed;
+		if (!game->data.map_int[(int)game->player.pos.y][(int)(game->player.pos.x
+			- game->player.dir.y * (move_speed))])
+			game->player.pos.x -= game->player.dir.y * move_speed;
+	}
+}
+
+void	_handle_move(t_game *game)
+{
+	double	move_speed;
+
+	move_speed = MOVE_SPEED;
+	move_forward(game, move_speed);
+	move_backward(game, move_speed);
+	move_left(game, move_speed);
+	move_right(game, move_speed);
+	rotate_left(game);
+	rotate_right(game);
 }

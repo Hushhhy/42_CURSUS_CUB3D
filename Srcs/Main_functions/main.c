@@ -6,7 +6,7 @@
 /*   By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 12:22:44 by acarpent          #+#    #+#             */
-/*   Updated: 2025/01/08 16:33:30 by acarpent         ###   ########.fr       */
+/*   Updated: 2025/01/09 15:26:58 by acarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,4 @@ int	main(int ac, char **av)
 		return (_error_msg("Detail", ERR_GET_FILE, 1));
 	_parse_file(&game);
 	_init_mlx(&game);
-	// _gaming(&game);
 }

@@ -6,7 +6,7 @@
 /*   By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 12:22:38 by acarpent          #+#    #+#             */
-/*   Updated: 2024/12/13 14:21:55 by acarpent         ###   ########.fr       */
+/*   Updated: 2025/01/09 14:05:09 by acarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,30 +32,28 @@ void	_data_init(t_game *game)
 
 void	_player_init(t_game *game)
 {
-	game->player.pos_x = -1;
-	game->player.pos_y = -1;
-	game->player.dir_x = -1;
-	game->player.dir_y = -1;
-	game->player.plane_x = -1;
-	game->player.plane_y = -1;
 	game->player.p_count = 0;
 	_ray_init(game);
 }
 
 void	_ray_init(t_game *game)
 {
-	game->ray.pos_x = -1;
-	game->ray.pos_y = -1;
-	game->ray.dir_x = -1;
-	game->ray.dir_y = -1;
-	game->ray.side_dist_x = -1;
-	game->ray.side_dist_y = -1;
-	game->ray.delta_dist_x = -1;
-	game->ray.delta_dist_y = -1;
-	game->ray.step_x = -1;
-	game->ray.step_y = -1;
-	game->ray.hit = -1;
+	game->ray.stepx = -1;
+	game->ray.stepy = -1;
 	game->ray.side = -1;
+	game->ray.lineheight = -1;
+	game->ray.start = -1;
+	game->ray.end = -1;
+	game->ray.color = -1;
+	game->ray.mapx = -1;
+	game->ray.mapy = -1;
+	game->ray.perp_walldist = -1;
+	game->ray.raydir.x = -1;
+	game->ray.raydir.y = -1;
+	game->ray.sidedist.x = -1;
+	game->ray.sidedist.y = -1;
+	game->ray.deltaDist.x = -1;
+	game->ray.deltaDist.y = -1;
 	_mlx_struct_init(game);
 }
 
@@ -65,6 +63,7 @@ void	_mlx_struct_init(t_game *game)
 	game->mlx.win_ptr = NULL;
 	game->mlx.img_ptr = NULL;
 	game->mlx.img_data = NULL;
+	game->mlx.addr = NULL;
 	game->mlx.bpp = -1;
 	game->mlx.size_line = -1;
 	game->mlx.endian = -1;

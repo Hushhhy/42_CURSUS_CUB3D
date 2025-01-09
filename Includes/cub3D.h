@@ -6,7 +6,7 @@
 /*   By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:14:51 by acarpent          #+#    #+#             */
-/*   Updated: 2025/01/08 16:19:08 by acarpent         ###   ########.fr       */
+/*   Updated: 2025/01/09 15:39:43 by acarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,51 +16,67 @@
 /*---------------------------INCLUDES-------------------------------*/
 
 # include "../libft/libft.h"
-# include "../mlx/mlx.h"
 # include "struct.h"
+# include "../mlx/mlx.h"
 # include <stdio.h>
 # include <stdlib.h>
-# include <sys/time.h>
 # include <fcntl.h>
 # include <unistd.h>
-# include <string.h>
 # include <math.h>
 # include <stdbool.h>
 
 # ifndef O_DIRECTORY
-#  define O_DIRECTORY 00200000
+#  define O_DIRECTORY 0
 # endif
 
 /*-----------------------------KEYS---------------------------------*/
 
-enum    e_keys {
-	KEY_ESC = 65307,
-	KEY_W = 119,
-	KEY_UP = 65362,
-	KEY_S = 115,
-	KEY_DOWN = 65364,
-	KEY_A = 97,
-	KEY_LEFT = 65361,
-	KEY_D = 100,
-	KEY_RIGHT = 65363, 
-};
+# define KEY_A 97
+# define KEY_D 100
+# define KEY_W 119
+# define KEY_S 115
+# define LEFT 65361
+# define RIGHT 65363
+# define UP 65362
+# define DOWN 65364
+# define ESC 65307
 
 /*-------------------------WINDOW DETAILS---------------------------*/
 
-# define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
+# define WIN_WIDTH 1920
 
 /*--------------------------GAME DETAILS----------------------------*/
 
-# define TILE_SIZE 30
-# define FOV 60
-# define ROTATION_SPEED 0.045
-# define PLAYER_SPEED 4
+# define FOV 66
+# define PI 3.1415926535
+# define CELL 40
+# define WIN_HEIGHT 1080
+# define WIN_WIDTH 1920
+# define MOVE_SPEED 0.05f
+# define ROT_SPEED 0.03f
+# define TEXTURE_WIDTH 64
+# define TEXTURE_HEIGHT 64
+# define SIZE_PLAYER 3
+# define MINIMAP_SCALE 5
 
 /*----------------------------COLORS--------------------------------*/
 
-# define RED "\e[31m"
-# define RESET	"\e[0m"
+# define RESET		"\e[0m"
+# define SALMON		"0x00FFA07A"
+# define RED		"0x00FF0000"
+# define BLACK		"0x00000000"
+# define WHITE		"0x00FFFFFF"
+# define GREEN		"0x0000FF00"
+# define BLUE		"0x000000FF"
+# define YELLOW		"0x00FFFF00"
+# define CYAN		"0x0000FFFF"
+# define MAGENTA	"0x00FF00FF"
+# define ORANGE		"0x00FFA500"
+# define PURPLE		"0x008A2BE2"
+# define PINK		"0x00FFC0CB"
+# define BROWN		"0x00A52A2A"
+# define GREY		"0x00808080"
 
 /*--------------------------ERROR DEF-------------------------------*/
 
@@ -169,7 +185,8 @@ int		_get_map_width(char **map);
 int		_get_map_height(char **map);
 void	_check_the_map(t_game *game);
 bool	_check_nb_player(char **map, t_game *game);
-void	_player_pos(t_game *game, int i, int j);
+void	_player_pos(t_game *game, int i, int j, char c);
+void	_player_cd(t_game *game, int i, int j);
 bool	_there_is_walls(char **map, int row, int col);
 bool	_check_closed_map(t_game *game);
 bool	_check_top_bot(char *line);
@@ -193,14 +210,24 @@ void	print_map_int(t_game *game);
 /*---------------------------------*/
 /*--IMAGES--*/
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	my_mlx_pixel_put(t_game *game, int x, int y, int color);
 
 /*---------------------------------*/
 /*--GAME CLEARING--*/
 
 int		_close_game(t_game *game);
 
-void	_gaming(t_game *game);
+int		_game(t_game *game);
 int		_key_press(int key, t_game *game);
+int		_key_release(int key, t_game *game);
+void	_handle_move(t_game *game);
+void	move_forward(t_game *game, double move_speed);
+void	move_backward(t_game *game, double move_speed);
+void	move_left(t_game *game, double move_speed);
+void	move_right(t_game *game, double move_speed);
+void	rotate_left(t_game *game);
+void	rotate_right(t_game *game);
+int	    _render(t_game *game);
+
 
 #endif

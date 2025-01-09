@@ -6,7 +6,7 @@
 /*   By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 14:04:42 by acarpent          #+#    #+#             */
-/*   Updated: 2025/01/08 16:25:31 by acarpent         ###   ########.fr       */
+/*   Updated: 2025/01/09 15:39:13 by acarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ bool	_check_nb_player(char **map, t_game *game)
 			{
 				if (flag == true)
 					return (false);
-				_player_pos(game, i, j);
+				_player_pos(game, i, j, map[i][j]);
 				flag = true;
 			}
 			j++;
@@ -56,10 +56,39 @@ bool	_check_nb_player(char **map, t_game *game)
 	return (true);
 }
 
-void	_player_pos(t_game *game, int i, int j)
+void	_player_cd(t_game *game, int i, int j)
 {
-	game->player.pos_x = j;
-	game->player.pos_y = i;
+	game->player.pos.x = j;
+	game->player.pos.y = i;
+}
+
+void	_player_pos(t_game *game, int i, int j, char c)
+{
+	_player_cd(game, i, j);
+	if (c == 'N')
+	{
+		game->player.dir.y = -1;
+		game->player.dir.x = 0;
+		game->player.plane.x = 0.66;
+	}
+	else if (c == 'S')
+	{
+		game->player.dir.x = 0;
+		game->player.dir.y = 1;
+		game->player.plane.x = -0.66;
+	}
+	else if (c == 'E')
+	{
+		game->player.dir.x = 1;
+		game->player.dir.y = 0;
+		game->player.plane.y = 0.66;
+	}
+	else if (c == 'O')
+	{
+		game->player.dir.x = -1;
+		game->player.dir.y = 0;
+		game->player.plane.y = 0.66;
+	}
 }
 
 bool	_check_closed_map(t_game *game)
