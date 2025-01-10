@@ -1,9 +1,9 @@
-NO path_to_the_north_texture.xpm
-SO path_to_the_south_texture.xpm
 F 10            ,255                    ,                          254
 C 225                   ,               30                     ,       0
-WE path_to_the_west_texture.xpm
-EA path_to_the_east_texture.xpm
+NO textures/eagle.xpm
+SO      textures/bluestone.xpm
+WE                   textures/redbrick_1.xpm                         
+EA textures/wood.xpm
 
 
 

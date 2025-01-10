@@ -6,7 +6,7 @@
 /*   By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:14:51 by acarpent          #+#    #+#             */
-/*   Updated: 2025/01/09 15:39:43 by acarpent         ###   ########.fr       */
+/*   Updated: 2025/01/10 15:55:59 by acarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,7 +227,13 @@ void	move_left(t_game *game, double move_speed);
 void	move_right(t_game *game, double move_speed);
 void	rotate_left(t_game *game);
 void	rotate_right(t_game *game);
-int	    _render(t_game *game);
+void    _render(t_game *game);
+void	draw_floor_ceiling(t_game *game);
+void	_init_ray(t_game *game, t_ray *ray, int x);
+void	_calculate_step(t_game *game, t_ray *ray);
+void    dda(t_game *game, t_ray *ray);
+double	_calculate_perp_wall_dist(t_game *game, t_ray ray);
+void	_draw_wall(t_game *game, t_ray ray, int x);
 
 
 #endif

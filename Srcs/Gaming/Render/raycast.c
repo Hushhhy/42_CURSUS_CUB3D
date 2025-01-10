@@ -6,13 +6,13 @@
 /*   By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 15:21:03 by acarpent          #+#    #+#             */
-/*   Updated: 2025/01/09 16:00:03 by acarpent         ###   ########.fr       */
+/*   Updated: 2025/01/10 15:55:53 by acarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	_render(t_game *game)
+void	_render(t_game *game)
 {
 	int		x;
 	t_ray	ray;
@@ -28,18 +28,18 @@ int	_render(t_game *game)
 		ray.lineheight = (int)(WIN_HEIGHT / ray.perp_walldist);
 		ray.start = -ray.lineheight / 2 + WIN_HEIGHT / 2;
 		ray.end = ray.lineheight / 2 + WIN_HEIGHT / 2;
-		_draw_wall(game, ray, x);
+		// _draw_wall(game, ray, x);
 		x++;
 	}
 }
 
-void	draw_wall(t_game *game, t_ray ray, int x)
-{
-	if (ray.start < 0)
-		ray.start = 0;
-	if (ray.end >= WIN_HEIGHT)
-		ray.end = WIN_HEIGHT - 1;
-}
+// void	_draw_wall(t_game *game, t_ray ray, int x)
+// {
+// 	if (ray.start < 0)
+// 		ray.start = 0;
+// 	if (ray.end >= WIN_HEIGHT)
+// 		ray.end = WIN_HEIGHT - 1;
+// }
 
 double	_calculate_perp_wall_dist(t_game *game, t_ray ray)
 {

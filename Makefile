@@ -6,7 +6,7 @@
 #    By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/06 20:27:40 by acarpent          #+#    #+#              #
-#    Updated: 2025/01/09 15:27:39 by acarpent         ###   ########.fr        #
+#    Updated: 2025/01/10 15:56:22 by acarpent         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ SRCS_FILES = Main_functions/main.c\
 				Gaming/main_game.c\
 				Gaming/Render/images.c\
 				Gaming/Render/raycast.c\
+				Gaming/Render/dda.c\
 				
 
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_FILES))			
